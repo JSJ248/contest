@@ -1,0 +1,112 @@
+<html>
+<head>
+	<title>첫번째 퀴즈</title>
+  <link rel="stylesheet" href="first.css">
+
+<script language="javascript">
+var delay=10; //시간설정
+var correctAnswers=new Array("a","a","a","a","a");  //정답
+
+var q_num=1;
+var timer;
+var layer;
+var clock=delay;
+var score=0;
+
+function show_question(){
+	if (layer=eval("document.all.question"+q_num)){
+		layer.style.display="inline";
+		document.all.timeLeft.innerHTML=clock;
+		hide_question();
+	} else {
+		document.all.timeLeft.innerHTML=0;
+		document.all.quizScore.innerHTML="당신은 "+(q_num-1)+"문제중 "+score+"개를 맞췄습니다.";
+		document.all.quizScore.style.display="inline";
+	}
+}
+
+function hide_question(){
+	if (clock>0) {
+		document.all.timeLeft.innerHTML=clock;
+		clock--;
+		timer=setTimeout("hide_question()",1000);
+	} else {
+		clearTimeout(timer);
+		document.all.answerBoard.innerHTML=" ";
+		clock=delay;
+		layer.style.display="none";
+		q_num++;
+		show_question();
+	}
+}
+
+function check_answer(answer){
+	if (correctAnswers[q_num-1]==answer){
+		score++;
+		document.all.answerBoard.innerHTML="<font color=blue><b>정답입니다.</b></font>";
+	} else {
+		document.all.answerBoard.innerHTML="<font color=red><b>땡! 틀렸습니다.</b></font>";
+	}
+	clock=0;
+	clearTimeout(timer);
+	timer=setTimeout("hide_question()",700);
+}
+
+window.onload=show_question;
+</script>
+</head>
+
+<body>
+  <h1>첫번째 퀴즈</h1>
+  <div class="back"><a href="solve.html">돌아가기</a><div><br>
+
+제한시간 : <B><span id="timeLeft"></span></B> 초<br>
+<br>
+<div id="answerBoard"> </div>
+<br>
+
+<div class="one" id="question1" style="display:none">
+	<b>1. 부여고등학교 교목, 교화로 올바른 것은?</b><br>
+	<a href="javascript:void(0)" style="color:green" onclick="check_answer('a')">a) 잣나무,매화</a><br>
+	<a href="javascript:void(0)" style="color:green" onclick="check_answer('b')">b) 소나무,매화</a><br>
+	<a href="javascript:void(0)" style="color:green" onclick="check_answer('c')">c) 소나무,개나리</a><br>
+	<a href="javascript:void(0)" style="color:green" onclick="check_answer('d')">d) 소나무,진달래</a><br>
+</div>
+
+<div id="question2" style="display:none">
+<b>2. 부여고등학교 창립년도는?</b><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('a')">a) 1946년</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('b')">b) 1956년</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('c')">c) 1966년</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('d')">d) 1976년</a><br>
+</div>
+
+<div id="question3" style="display:none">
+<b>3. 부여고등학교 교장선생님 성함과 교감선생님 성함으로 올바른 것은?</b><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('a')">a) 황의도, 홍준기</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('b')">b) 황정임, 홍임표</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('c')">c) 황재현, 홍대성</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('d')">d) 황창연, 홍기훈</a><br>
+</div>
+
+<div id="question4" style="display:none">
+<b>4. 부여고등학교 교가의 중 하나이다. 올바른 것은?</b><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('a')">a) "금성산 하늘높이 어린정기는~"</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('b')">b) "푸른꿈 푸른시상 가슴에 품고~"</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('c')">c) "금성산 기슭가지 무궁화 피는 곳~"</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('d')">d) "민족의 등대로 인류의 표상으로~"</a><br>
+</div>
+
+<div id="question5" style="display:none">
+<b>5. 부여고등학교 교직원 현황 중, 정원과 현원의 수의 합으로 올바른 것은?</b><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('a')">a) 118</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('b')">b) 116</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('c')">c) 117</a><br>
+<a href="javascript:void(0)" style="color:green" onclick="check_answer('d')">d) 115</a><br>
+</div>
+
+<div id="quizScore" style="display:none">
+</div>
+
+</body>
+</html>

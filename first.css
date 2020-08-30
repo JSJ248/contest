@@ -1,0 +1,19 @@
+body{
+  background: beige;
+}
+
+h1{
+  text-align: center;
+  border: 20px solid pink;
+}
+
+*{
+  text-align: center;
+}
+
+.back{
+  border: 20px solid pink;
+}
+.one{
+  font-size: 20px;
+}
